@@ -1,0 +1,628 @@
+{
+    "title": "Relay",
+    "description": "Use these API to manage Azure Relay resources through Azure Resource Manager.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/relay/2017-04-01/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Operations_List": {
+            "main": "./lib/actions/Operations_List.js",
+            "title": "Lists all available Relay REST API operations.",
+            "description": "Lists all available Relay REST API operations.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Operations_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_CheckNameAvailability": {
+            "main": "./lib/actions/Namespaces_CheckNameAvailability.js",
+            "title": "Check the specified namespace name availability.",
+            "description": "Check the specified namespace name availability.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_CheckNameAvailability.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_List": {
+            "main": "./lib/actions/Namespaces_List.js",
+            "title": "Lists all the available namespaces within the subscription regardless of the resourceGroups.",
+            "description": "Lists all the available namespaces within the subscription regardless of the resourceGroups.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_ListByResourceGroup": {
+            "main": "./lib/actions/Namespaces_ListByResourceGroup.js",
+            "title": "Lists all the available namespaces within the ResourceGroup.",
+            "description": "Lists all the available namespaces within the ResourceGroup.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_ListByResourceGroup.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_Delete": {
+            "main": "./lib/actions/Namespaces_Delete.js",
+            "title": "Deletes an existing namespace. This operation also removes all associated resources under the namespace.",
+            "description": "Deletes an existing namespace. This operation also removes all associated resources under the namespace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_Get": {
+            "main": "./lib/actions/Namespaces_Get.js",
+            "title": "Returns the description for the specified namespace.",
+            "description": "Returns the description for the specified namespace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_Update": {
+            "main": "./lib/actions/Namespaces_Update.js",
+            "title": "Creates or updates a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.",
+            "description": "Creates or updates a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_CreateOrUpdate": {
+            "main": "./lib/actions/Namespaces_CreateOrUpdate.js",
+            "title": "Create Azure Relay namespace.",
+            "description": "Create Azure Relay namespace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_ListAuthorizationRules": {
+            "main": "./lib/actions/Namespaces_ListAuthorizationRules.js",
+            "title": "Authorization rules for a namespace.",
+            "description": "Authorization rules for a namespace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_ListAuthorizationRules.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_DeleteAuthorizationRule": {
+            "main": "./lib/actions/Namespaces_DeleteAuthorizationRule.js",
+            "title": "Deletes a namespace authorization rule.",
+            "description": "Deletes a namespace authorization rule.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_DeleteAuthorizationRule.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_GetAuthorizationRule": {
+            "main": "./lib/actions/Namespaces_GetAuthorizationRule.js",
+            "title": "Authorization rule for a namespace by name.",
+            "description": "Authorization rule for a namespace by name.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_GetAuthorizationRule.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_CreateOrUpdateAuthorizationRule": {
+            "main": "./lib/actions/Namespaces_CreateOrUpdateAuthorizationRule.js",
+            "title": "Creates or updates an authorization rule for a namespace.",
+            "description": "Creates or updates an authorization rule for a namespace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_CreateOrUpdateAuthorizationRule.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_ListKeys": {
+            "main": "./lib/actions/Namespaces_ListKeys.js",
+            "title": "Primary and secondary connection strings to the namespace.",
+            "description": "Primary and secondary connection strings to the namespace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_ListKeys.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_RegenerateKeys": {
+            "main": "./lib/actions/Namespaces_RegenerateKeys.js",
+            "title": "Regenerates the primary or secondary connection strings to the namespace.",
+            "description": "Regenerates the primary or secondary connection strings to the namespace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_RegenerateKeys.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "HybridConnections_ListByNamespace": {
+            "main": "./lib/actions/HybridConnections_ListByNamespace.js",
+            "title": "Lists the hybrid connection within the namespace.",
+            "description": "Lists the hybrid connection within the namespace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/HybridConnections_ListByNamespace.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "HybridConnections_Delete": {
+            "main": "./lib/actions/HybridConnections_Delete.js",
+            "title": "Deletes a hybrid connection.",
+            "description": "Deletes a hybrid connection.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/HybridConnections_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "HybridConnections_Get": {
+            "main": "./lib/actions/HybridConnections_Get.js",
+            "title": "Returns the description for the specified hybrid connection.",
+            "description": "Returns the description for the specified hybrid connection.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/HybridConnections_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "HybridConnections_CreateOrUpdate": {
+            "main": "./lib/actions/HybridConnections_CreateOrUpdate.js",
+            "title": "Creates or updates a service hybrid connection. This operation is idempotent.",
+            "description": "Creates or updates a service hybrid connection. This operation is idempotent.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/HybridConnections_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "HybridConnections_ListAuthorizationRules": {
+            "main": "./lib/actions/HybridConnections_ListAuthorizationRules.js",
+            "title": "Authorization rules for a hybrid connection.",
+            "description": "Authorization rules for a hybrid connection.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/HybridConnections_ListAuthorizationRules.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "HybridConnections_DeleteAuthorizationRule": {
+            "main": "./lib/actions/HybridConnections_DeleteAuthorizationRule.js",
+            "title": "Deletes a hybrid connection authorization rule.",
+            "description": "Deletes a hybrid connection authorization rule.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/HybridConnections_DeleteAuthorizationRule.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "HybridConnections_GetAuthorizationRule": {
+            "main": "./lib/actions/HybridConnections_GetAuthorizationRule.js",
+            "title": "Hybrid connection authorization rule for a hybrid connection by name.",
+            "description": "Hybrid connection authorization rule for a hybrid connection by name.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/HybridConnections_GetAuthorizationRule.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "HybridConnections_CreateOrUpdateAuthorizationRule": {
+            "main": "./lib/actions/HybridConnections_CreateOrUpdateAuthorizationRule.js",
+            "title": "Creates or updates an authorization rule for a hybrid connection.",
+            "description": "Creates or updates an authorization rule for a hybrid connection.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/HybridConnections_CreateOrUpdateAuthorizationRule.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "HybridConnections_ListKeys": {
+            "main": "./lib/actions/HybridConnections_ListKeys.js",
+            "title": "Primary and secondary connection strings to the hybrid connection.",
+            "description": "Primary and secondary connection strings to the hybrid connection.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/HybridConnections_ListKeys.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "HybridConnections_RegenerateKeys": {
+            "main": "./lib/actions/HybridConnections_RegenerateKeys.js",
+            "title": "Regenerates the primary or secondary connection strings to the hybrid connection.",
+            "description": "Regenerates the primary or secondary connection strings to the hybrid connection.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/HybridConnections_RegenerateKeys.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "WCFRelays_ListByNamespace": {
+            "main": "./lib/actions/WCFRelays_ListByNamespace.js",
+            "title": "Lists the WCF relays within the namespace.",
+            "description": "Lists the WCF relays within the namespace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/WCFRelays_ListByNamespace.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "WCFRelays_Delete": {
+            "main": "./lib/actions/WCFRelays_Delete.js",
+            "title": "Deletes a WCF relay.",
+            "description": "Deletes a WCF relay.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/WCFRelays_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "WCFRelays_Get": {
+            "main": "./lib/actions/WCFRelays_Get.js",
+            "title": "Returns the description for the specified WCF relay.",
+            "description": "Returns the description for the specified WCF relay.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/WCFRelays_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "WCFRelays_CreateOrUpdate": {
+            "main": "./lib/actions/WCFRelays_CreateOrUpdate.js",
+            "title": "Creates or updates a WCF relay. This operation is idempotent.",
+            "description": "Creates or updates a WCF relay. This operation is idempotent.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/WCFRelays_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "WCFRelays_ListAuthorizationRules": {
+            "main": "./lib/actions/WCFRelays_ListAuthorizationRules.js",
+            "title": "Authorization rules for a WCF relay.",
+            "description": "Authorization rules for a WCF relay.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/WCFRelays_ListAuthorizationRules.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "WCFRelays_DeleteAuthorizationRule": {
+            "main": "./lib/actions/WCFRelays_DeleteAuthorizationRule.js",
+            "title": "Deletes a WCF relay authorization rule.",
+            "description": "Deletes a WCF relay authorization rule.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/WCFRelays_DeleteAuthorizationRule.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "WCFRelays_GetAuthorizationRule": {
+            "main": "./lib/actions/WCFRelays_GetAuthorizationRule.js",
+            "title": "Get authorizationRule for a WCF relay by name.",
+            "description": "Get authorizationRule for a WCF relay by name.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/WCFRelays_GetAuthorizationRule.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "WCFRelays_CreateOrUpdateAuthorizationRule": {
+            "main": "./lib/actions/WCFRelays_CreateOrUpdateAuthorizationRule.js",
+            "title": "Creates or updates an authorization rule for a WCF relay.",
+            "description": "Creates or updates an authorization rule for a WCF relay.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/WCFRelays_CreateOrUpdateAuthorizationRule.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "WCFRelays_ListKeys": {
+            "main": "./lib/actions/WCFRelays_ListKeys.js",
+            "title": "Primary and secondary connection strings to the WCF relay.",
+            "description": "Primary and secondary connection strings to the WCF relay.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/WCFRelays_ListKeys.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "WCFRelays_RegenerateKeys": {
+            "main": "./lib/actions/WCFRelays_RegenerateKeys.js",
+            "title": "Regenerates the primary or secondary connection strings to the WCF relay.",
+            "description": "Regenerates the primary or secondary connection strings to the WCF relay.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/WCFRelays_RegenerateKeys.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

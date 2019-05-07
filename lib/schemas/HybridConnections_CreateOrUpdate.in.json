@@ -1,0 +1,94 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 90
+        },
+        "namespaceName": {
+            "required": true,
+            "type": "string",
+            "minLength": 6,
+            "maxLength": 50
+        },
+        "hybridConnectionName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "The resource definition.",
+                    "properties": {
+                        "id": {
+                            "description": "Resource ID.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "Resource name.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "type": {
+                            "description": "Resource type.",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "x-ms-azure-resource": true,
+                    "type": "object"
+                }
+            ],
+            "description": "Description of hybrid connection resource.",
+            "properties": {
+                "properties": {
+                    "description": "Properties of the HybridConnection.",
+                    "properties": {
+                        "createdAt": {
+                            "description": "The time the hybrid connection was created.",
+                            "format": "date-time",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "listenerCount": {
+                            "description": "The number of listeners for this hybrid connection. Note that min : 1 and max:25 are supported.",
+                            "format": "int32",
+                            "maximum": 25,
+                            "minimum": 0,
+                            "readOnly": true,
+                            "type": "integer"
+                        },
+                        "requiresClientAuthorization": {
+                            "description": "Returns true if client authorization is needed for this hybrid connection; otherwise, false.",
+                            "type": "boolean"
+                        },
+                        "updatedAt": {
+                            "description": "The time the namespace was updated.",
+                            "format": "date-time",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "userMetadata": {
+                            "description": "The usermetadata is a placeholder to store user-defined string data for the hybrid connection endpoint. For example, it can be used to store descriptive data, such as a list of teams and their contact information. Also, user-defined configuration settings can be stored.",
+                            "type": "string"
+                        }
+                    },
+                    "x-ms-client-flatten": true
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
